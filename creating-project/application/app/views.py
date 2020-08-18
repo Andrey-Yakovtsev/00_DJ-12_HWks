@@ -43,12 +43,9 @@ def current_time_view(request):
     return HttpResponse(f'Current time is: {current_time}')
 
 def workdir_view(request):
-    dirpath = os.listdir(path='.') #/home/ayakovtsev/PycharmProjects/00_DJ-12_HWks/dj-homeworks/creating-project/appliсation')
-    return HttpResponse(list(dirpath))
+    dirpath = os.listdir(path='.')
+    path = '\\'.join(dirpath)
+    return HttpResponse(f'<h3>Our workdir is:</h3> {path}')
 
 def home_view(request):
-
-    return HttpResponse('<h1>У нас есть следующие разделы:</h1>'
-                        '<div></div><a href="/current_time">Текущее время</a>'
-                        '<div></div><a href="/table">Табличка с телефонами</a>'
-                        '<div></div><a href="/workdir">Список директорий и файлов проекта</a>')
+    return render(request, 'index.html')
