@@ -1,5 +1,8 @@
 import csv
+import os
+from datetime import datetime
 
+from django.http import HttpResponse
 from django.shortcuts import render
 
 
@@ -34,3 +37,18 @@ def table_view(request):
         }
         result = render(request, template, context)
     return result
+
+def current_time_view(request):
+    current_time = datetime.now()
+    return HttpResponse(f'Current time is: {current_time}')
+
+def workdir_view(request):
+    dirpath = os.listdir(path='.') #/home/ayakovtsev/PycharmProjects/00_DJ-12_HWks/dj-homeworks/creating-project/appliсation')
+    return HttpResponse(list(dirpath))
+
+def home_view(request):
+
+    return HttpResponse('<h1>У нас есть следующие разделы:</h1>'
+                        '<div></div><a href="/current_time">Текущее время</a>'
+                        '<div></div><a href="/table">Табличка с телефонами</a>'
+                        '<div></div><a href="/workdir">Список директорий и файлов проекта</a>')
