@@ -9,18 +9,42 @@ from django.shortcuts import render_to_response
 counter_show = Counter()
 counter_click = Counter()
 
+index_counter = 1
+i = 0
+j = 0
 
 def index(request):
+    # counter = {}
+    from_landing = request.GET.get('from-landing')
+    global j
+    global i
+    global index_counter
+    if from_landing == 'test':
+        i += 1
+        counter = {'test': i}
+        print(counter)
+    else:
+        j += 1
+        counter = {'landing': j}
+        print(counter)
     # Реализуйте логику подсчета количества переходов с лендига по GET параметру from-landing
+    index_counter += 1
     return render_to_response('index.html')
 
 
 def landing(request):
-    # Реализуйте дополнительное отображение по шаблону app/landing_alternate.html
+    from_landing = request.GET.get('from-landing')
+    if from_landing == 'test':
+        return render_to_response('landing_alternate.html')
+    else:
+        return render_to_response('landing.html')
+
+# Реализуйте дополнительное отображение по шаблону app/landing_alternate.html
     # в зависимости от GET параметра ab-test-arg
     # который может принимать значения original и test
     # Так же реализуйте логику подсчета количества показов
-    return render_to_response('landing.html')
+
+
 
 
 def stats(request):
@@ -29,6 +53,7 @@ def stats(request):
     # проверяйте GET параметр marker который может принимать значения test и original
     # Для вывода результат передайте в следующем формате:
     return render_to_response('stats.html', context={
-        'test_conversion': 0.5,
-        'original_conversion': 0.4,
+        'index_counter': index_counter,
+        'test_conversion':  i / index_counter,
+        'original_conversion': j / index_counter,
     })

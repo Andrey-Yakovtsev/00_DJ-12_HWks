@@ -22,7 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('table/', table_view, name='table'),
     path('current_time/', current_time_view, name='time'),
-    path('workdir/', workdir_view, name='workdor'),
+    path('workdir/', workdir_view, name='workdir'),
     path('index/', home_view, name='home'),
     path('', lambda x: HttpResponseRedirect('/index/')),
 ]
