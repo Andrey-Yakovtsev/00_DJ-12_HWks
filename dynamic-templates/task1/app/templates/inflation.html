@@ -1,3 +1,5 @@
+{% load colour_filter %}
+
 <!DOCTYPE html>{% load static %}
 <html>
   <head>
@@ -17,9 +19,18 @@
       <div class="row">
         <h1 class="col s12">Инфляция в России</h1>
         <div class="col s12 m8">
-        
-        <!-- Ваша логика -->
-
+          <table>
+            {% for head in table_header %}
+            <th>
+              {{head}}
+            </th>
+            {% endfor %}
+            <tr> {% for string in table %} </tr>
+                    {% for data in string%}
+                      <td style="background-color:{{ data | get_colour }}"> {{data}} </td>
+            {% endfor %}
+            {% endfor %}
+          </table>
         </div>
       </div>
     {% endblock %}
