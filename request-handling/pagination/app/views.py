@@ -1,7 +1,7 @@
 from urllib.parse import urlencode
 
 from django.core.paginator import Paginator
-from django.http import HttpResponse
+
 from django.shortcuts import render_to_response, redirect
 from django.urls import reverse
 import csv
@@ -23,7 +23,9 @@ def bus_stations(request):
     return render_to_response('index.html', context={
         'bus_stations': page_obj,
         'current_page': current_page,
-        'prev_page_url': f'bus_stations?page={int(current_page)-1}' if page_obj.has_previous() else None,
-        'next_page_url': f'bus_stations?page={page_obj.next_page_number()}'
+        'prev_page_url': reverse('bus_stations') + '?' + urlencode({'page': page_obj.previous_page_number()}) if page_obj.has_previous() else None,
+        'next_page_url': reverse('bus_stations') + '?' + urlencode({'page': page_obj.next_page_number()}) if page_obj.has_next() else None
+        # 'prev_page_url': f'bus_stations?page={int(current_page)-1}' if page_obj.has_previous() else None,
+        # 'next_page_url': f'bus_stations?page={page_obj.next_page_number()}' if page_obj.has_next() else None
     })
 

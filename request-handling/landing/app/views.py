@@ -26,8 +26,7 @@ def index(request):
     else:
         j += 1
         counter = {'landing': j}
-        print(counter)
-    # Реализуйте логику подсчета количества переходов с лендига по GET параметру from-landing
+
     index_counter += 1
     return render_to_response('index.html')
 
