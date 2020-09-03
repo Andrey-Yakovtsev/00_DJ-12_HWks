@@ -18,7 +18,7 @@ def top_reddit_view(request):
     template_name = 'top_reddit.html'
 
     posts = do_request()
-    pprint(posts)
+    # pprint(posts)
     context = {
         'posts': posts,
         'prefix': 'https://reddit.com'
