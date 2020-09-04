@@ -13,11 +13,4 @@ settings_local.py
 
 ### OS specific ###
 .DS_Store
-/databases/
-/databases_2/
-/dynamic-templates/
-/first-project/
-/request-handling/
-/site-form-works/
-/site-personalization/
-/requirements.txt
+

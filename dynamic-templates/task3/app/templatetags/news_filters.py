@@ -13,19 +13,20 @@ def do_request():
     return resp.json()['data']['children']
 
 @register.filter
-def format_date(value):
+def format_date(value2):
     posts = do_request()
     for post in posts:
         date = post['data']['created_utc']
         nowadays = datetime.now().timestamp()
-        value = (nowadays - date)
-        if value//(60*60*24) > 24:
-            return f'Дата публикации {time.ctime(date)}'
-        elif 600 < value < 60*60*24:
-            hours = int(value//(60*60))
-            return f'{hours} часов назад'
+        value2 = (nowadays - date)
+        if value2//(60 * 60 * 24) > 24:
+            value = f'Дата публикации {time.ctime(date)}'
+        elif 600 < value2 < 60*60*24:
+            hours = int(value2 // (60 * 60))
+            value = f'{hours} часов назад'
         else:
-            return 'Только что'
+            value = 'Только что'
+    return value
 
 
 
