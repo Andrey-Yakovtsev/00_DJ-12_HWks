@@ -14,3 +14,6 @@ settings_local.py
 ### OS specific ###
 .DS_Store
 
+/dynamic-templates/task1/app/templatetags/__init__.py
+/dynamic-templates/task1/__init__.py
+/dynamic-templates/__init__.py
