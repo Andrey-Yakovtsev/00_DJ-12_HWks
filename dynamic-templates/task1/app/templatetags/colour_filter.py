@@ -6,18 +6,11 @@ register = library.Library()
 
 @register.filter()
 def get_colour(value):
-    with open("inflation_russia.csv", encoding="utf-8") as fo:
-        read_csv = list(csv.reader(fo))
-    table = [x.split(';') for b in read_csv for x in b]
-
-    for name in table[1:]:
-        if value == name[0]:
-            return "White"
-        if value == name[-1]:
-            return "Grey"
 
     if value != '-':
-        if float(value) < 0:
+        if float(value) > 1990:
+            return "White"
+        elif float(value) < 0:
             return 'Green'
         elif 1 < float(value) < 2:
             return 'LightSalmon'
@@ -27,3 +20,9 @@ def get_colour(value):
             return 'Red'
     else:
         pass
+
+@register.filter()  # Это фильтр для крайних столбцов. Доделать...
+def make_gray(value):
+
+    if value:
+        return "Grey"

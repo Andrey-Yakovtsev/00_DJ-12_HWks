@@ -20,8 +20,7 @@ def inflation_view(request):
                 pass
 
     context = {
-        'table_header': table[0],
-        'table': table[1:]
+        'table': table
     }
 
     return render(request, template_name, context)

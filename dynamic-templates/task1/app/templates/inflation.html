@@ -16,24 +16,29 @@
 
   <body>
     {% block content %}
-      <div class="row">
-        <h1 class="col s12">Инфляция в России</h1>
-        <div class="col s12 m8">
-          <table>
-            {% for head in table_header %}
-            <th>
-              {{head}}
-            </th>
-            {% endfor %}
-            <tr> {% for string in table %} </tr>
-                    {% for data in string%}
-                      <td style="background-color:{{ data | get_colour }}"> {{data}} </td>
-            {% endfor %}
-            {% endfor %}
-          </table>
-        </div>
-      </div>
+        <table>
+            <div class="row"> <h1 class="col s12">Инфляция в России</h1>
+                <div class="col s12 m8">
+                    <tr>{% for string in table %}</tr>
+                        {% if forloop.first %}
+                            <td>{% for data in string%} </td>
+                                <td style="background-color:white"> {{ data}} </td>
+                            {% endfor %}
+                        {% else %}
+                            <td>{% for data in string%} </td>
+                                {% if forloop.first %}
+                                    <td style="background-color:white"> {{ data}} </td>
+                                {% elif forloop.last %}
+                                <td style="background-color:gray"> {{ data}} </td>
+                                {% else %}
+                            <td style="background-color:{{ data | get_colour}}"> {{data}} </td>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </table>
     {% endblock %}
-
   </body>
 </html>
