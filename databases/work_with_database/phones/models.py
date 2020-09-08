@@ -2,5 +2,10 @@ from django.db import models
 
 
 class Phone(models.Model):
-    # TODO: Добавьте требуемые поля
-    pass
+    id = models.IntegerField(primary_key=True)
+    name = models.TextField(blank=False)
+    price = models.FloatField(blank=True)
+    image = models.ImageField(blank=True)
+    release_date = models.DateField(blank=True)
+    lte_exists = models.BooleanField(blank=True)
+    slug = models.CharField(max_length=150)
