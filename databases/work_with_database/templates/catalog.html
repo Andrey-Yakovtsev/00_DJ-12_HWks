@@ -7,13 +7,29 @@
         <div class="header">
             <h1><a href="/catalog">Каталог</a></h1>
         </div>
+    <div class="btn-group">
+        <p>Сортировать по:</p>
 
-        <div class="sort-block">
-            {# Здесь должен быть раздел с сортировкой #}
-        </div>
-
+        <button>NAME</button>
+        <button> <a href="?name.asc"> Ascending</a> </button>
+        <button> <a href="?name.desc"> Descending</a> </button>
+  <button>PRICE</button>
+        <button> <a href="?price.asc">Ascending </a> </button>
+        <button> <a href="?price.desc">Descending </a></button>
+</div>
+<br>
+<br>
         <div class="content">
-            {# Здесь должен отображаться каталог с телефонами #}
+        <table id="PhoneListing" border="1">
+            <tr>
+                <th> Photo</th><th>Model name</th><th>Price</th>
+            </tr>
+        <tr>{%   for phone in phones %}</tr>
+            <td> <a href="/catalog/{{ phone.slug }}"> <img src="{{ phone.image  }}"></td>
+            <td> <a href="/catalog/{{ phone.slug }}"> <h2> {{  phone.name }}</h2></td>
+            <td><p style="font-weight: bold"> {{  phone.price  }} </p> </td>
+            {% endfor %}
+        </table>
         </div>
     </div>
 {% endblock %}
