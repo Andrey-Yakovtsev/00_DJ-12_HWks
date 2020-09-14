@@ -3,9 +3,24 @@
 
 {% block title %}Каталог{% endblock %}
 {% block content %}
-    <div class="container">
-        <div class="header">
+    <section class="cd-products-comparison-table">
+        <header>
             <h1>Сравнение телефонов</h1>
-        </div>
-    </div>
+            <div class="actions">
+                <a href="#0" class="reset">Reset</a>
+                <a href="#0" class="filter">Filter</a>
+            </div>
+            </div>
+        </header>
+
+        <div class="cd-products-table">
+		<div class="features">
+			<div class="top-info">Models</div>
+			<ul class="cd-features-list">
+				<li>Price</li>
+				<li>Customer Rating</li>
+				<li>Resolution</li>
+				<!-- other features here -->
+			</ul>
+		</div> <!-- .features -->
 {% endblock %}
