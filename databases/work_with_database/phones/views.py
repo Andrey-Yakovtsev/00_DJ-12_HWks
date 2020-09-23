@@ -5,17 +5,16 @@ from .models import Phone
 
 def show_catalog(request):
     template = 'catalog.html'
-    phones_models = Phone.objects.all()
-    if 'price.desc' in request.GET:
-       phones_models = Phone.objects.order_by('-price')
-    if 'price.asc' in request.GET:
-       phones_models = Phone.objects.order_by('price')
-    if 'name.desc' in request.GET:
-       phones_models = Phone.objects.order_by('-name')
-    if 'name.asc' in request.GET:
-       phones_models = Phone.objects.order_by('name')
+    parameter = list(request.GET.keys())
+    sorter = {
+        'price.desc': Phone.objects.order_by('-price'),
+         'price.asc': Phone.objects.order_by('price'),
+         'name.desc': Phone.objects.order_by('-name'),
+         'name.asc': Phone.objects.order_by('name')
+    }
 
-    context = {'phones': phones_models}
+    context = {'phones': sorter[parameter[0]]}
+
     return render(request, template, context)
 
 

@@ -1,26 +1,70 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Каталог{% endblock %}
+{% block title %}Сравнение{% endblock %}
 {% block content %}
-    <section class="cd-products-comparison-table">
-        <header>
-            <h1>Сравнение телефонов</h1>
-            <div class="actions">
-                <a href="#0" class="reset">Reset</a>
-                <a href="#0" class="filter">Filter</a>
-            </div>
-            </div>
-        </header>
 
-        <div class="cd-products-table">
-		<div class="features">
-			<div class="top-info">Models</div>
-			<ul class="cd-features-list">
-				<li>Price</li>
-				<li>Customer Rating</li>
-				<li>Resolution</li>
-				<!-- other features here -->
-			</ul>
-		</div> <!-- .features -->
+    <div class="container">
+        <div class="header">
+            <h1>Сравнение телефонов</h1>
+        </div>
+        <table cellspacing="20" cellpadding="15" border="1">
+        <div class="content">
+ <tr>
+     <th>Модель:</th>
+             {%for phone in phones%}
+                <th><p><h6 style="font-weight: bold" align="center">{{phone.modelname}}</h6>
+            {% endfor %}
+ </tr>
+            <tr>
+     <td>Брэнд:</td>
+             {%for phone in phones%}
+                <td><p><h6>{{phone.brand}}</h6>
+            {% endfor %}
+ </tr>
+            <tr>
+                <td>Стоимость:</td>
+                 {%for phone in phones%}
+                    <td><p><h6>{{phone.price}}</h6>
+                {% endfor %}
+            </tr>
+            <tr>
+        <td>Год выпуска:</td>
+         {%for phone in phones%}
+            <td><p><h6>{{phone.model_year}}</h6>
+        {% endfor %}
+            </tr>
+        <tr>
+        <td>Дополнительно:</td>
+         {%for extra in extras %}
+            <td><p><h6>{{extra}}</h6>
+        {% endfor %}
+            </tr>
+
+{#        {% for values in phones_values %}#}
+{#            {% if forloop.first %}#}
+{#            {% for item in  values.keys   %}#}
+{#              <li> {{ item }} </li>#}
+{#            {% endfor %}#}
+{#            {% endif %}#}
+{#        {% endfor %}#}
+
+
+{#</head>#}
+{#<div class=col-sm-4>#}
+{#       {% for phone in phones_values_list %}#}
+{#            {% for item in phone %}#}
+{#                {% if forloop.first %}#}
+{#                    <div class="col-6" style="background-color:#ddd;">#}
+{#                        <h4> {{ item }} </h4>#}
+{#                    {% else %}#}
+{#                        <p>{{ item }}</p>#}
+{##}
+{##}
+{#            {% endif %}#}
+{#                {% endfor %}#}
+{#</div>#}
+{#        {% endfor %}#}
+{##}
+{#</div>#}
 {% endblock %}

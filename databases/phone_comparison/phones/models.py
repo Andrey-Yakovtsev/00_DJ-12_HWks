@@ -3,40 +3,37 @@ from django.db import models
 
 class Phone(models.Model):
     modelname = models.TextField(primary_key=True, serialize=False)
-    brand = models.TextField(blank=True, null=True)
-    name = models.TextField(blank=False, null=True)
+    brand = models.TextField(blank=True, default='')
+    name = models.TextField(blank=True, default='')
     price = models.FloatField(blank=True, null=True)
     image = models.ImageField(blank=True, null=True)
-    model_year = models.CharField(max_length=4, blank=True, null=True)
+    model_year = models.CharField(max_length=4, blank=True, default='')
     has_camera = models.BooleanField(blank=True, null=True)
-    camera_res = models.CharField(max_length=50, blank=True, null=True)
-    sim_type = models.TextField(blank=True, null=True)
-    dimensions = models.CharField(max_length=50, blank=True, null=True)
-    weight = models.CharField(max_length=10, blank=True, null=True)
-    battery_capacity = models.CharField(max_length=30, blank=True, null=True)
-    os_version = models.TextField(blank=True, null=True)
-    processor = models.TextField(blank=True, null=True)
-    gps_support = models.TextField(blank=True, null=True)
+    camera_res = models.CharField(max_length=50, blank=True, default='')
+    sim_type = models.TextField(blank=True, default='')
+    dimensions = models.CharField(max_length=50, blank=True, default='')
+    weight = models.CharField(max_length=10, blank=True, default='')
+    battery_capacity = models.CharField(max_length=30, blank=True, default='')
+    os_version = models.TextField(blank=True, default='')
+    processor = models.TextField(blank=True, default='')
+    gps_support = models.TextField(blank=True, default='')
     lte_exists = models.BooleanField(blank=True, null=True)
     fingerprint_scanner = models.BooleanField(blank=True, null=True)
     face_scanner = models.BooleanField(blank=True, null=True)
-    color = models.TextField(blank=True, null=True)
-    slug = models.CharField(max_length=150, blank=True, default='', null=True)
+    color = models.TextField(blank=True, default='')
+    slug = models.CharField(max_length=150, blank=True, default='')
 
 
 class Apple_brand(models.Model):
-    model = models.ForeignKey(Phone, default='', on_delete=models.CASCADE, verbose_name='Название модели', related_name='+')
-    display = models.CharField(max_length=100, default='', blank=True, null=True)
-    giroscope = models.BooleanField(default=True, null=True)
-    connection = models.CharField(max_length=100, default='', blank=True, null=True)
+    model = models.ForeignKey(Phone, on_delete=models.CASCADE, verbose_name='Название модели', related_name='+')
+    extra = models.CharField(verbose_name="Дополнительно", max_length=200, blank=True, default='')
 
 
 class Samsung_brand(models.Model):
-    model = models.ForeignKey(Phone, default='', on_delete=models.CASCADE, verbose_name='Название модели', related_name='+')
-    sound = models.TextField(default='')
-    sd_card_support = models.BooleanField(default=True)
+    model = models.ForeignKey(Phone, on_delete=models.CASCADE, verbose_name='Название модели', related_name='+')
+    extra = models.CharField(verbose_name="Дополнительно", max_length=200, blank=True, default='')
 
 
 class Nokia_brand(models.Model):
-    model = models.ForeignKey(Phone, default='', on_delete=models.CASCADE, verbose_name='Название модели', related_name='+')
-    GPU = models.CharField(max_length=50)
+    model = models.ForeignKey(Phone, on_delete=models.CASCADE, verbose_name='Название модели', related_name='+')
+    extra = models.CharField(verbose_name="Дополнительно", max_length=200, blank=True, default='')
