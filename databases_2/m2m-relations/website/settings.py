@@ -13,6 +13,11 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+from sys import path
+
+from django.conf import settings
+from django.urls import include, path
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -37,10 +42,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'articles.apps.ArticlesConfig'
+
+    'articles.apps.ArticlesConfig',
 ]
 
+# if DEBUG:
+#     INSTALLED_APPS += [
+#         'debug_toolbar'
+#     ]
+
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -70,6 +82,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'website.wsgi.application'
 
+# INTERNAL_IPS = [
+#     '127.0.0.1',
+# ]
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -95,6 +111,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# if settings.DEBUG:
+#     import debug_toolbar
+#     urlpatterns = [
+#         path('__debug__/', include(debug_toolbar.urls)),
+#     ] + urlpatterns
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
