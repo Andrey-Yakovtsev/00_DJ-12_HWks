@@ -46,10 +46,10 @@ INSTALLED_APPS = [
     'articles.apps.ArticlesConfig',
 ]
 
-# if DEBUG:
-#     INSTALLED_APPS += [
-#         'debug_toolbar'
-#     ]
+if DEBUG:
+    INSTALLED_APPS += [
+        'debug_toolbar'
+    ]
 
 MIDDLEWARE = [
     'debug_toolbar.middleware.DebugToolbarMiddleware',
@@ -82,9 +82,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'website.wsgi.application'
 
-# INTERNAL_IPS = [
-#     '127.0.0.1',
-# ]
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
 
 DATABASES = {
     'default': {
@@ -111,11 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# if settings.DEBUG:
-#     import debug_toolbar
-#     urlpatterns = [
-#         path('__debug__/', include(debug_toolbar.urls)),
-#     ] + urlpatterns
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/
