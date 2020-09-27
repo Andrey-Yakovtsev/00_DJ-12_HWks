@@ -14,11 +14,11 @@
         </h4>
         <p class="card-text">{{ article.text }}</p>
 {#        {% for tagcon in tagconnectors %}#}
+{#            {% if tagcon.is_main  %}#}
 {#            {% for tag in tags %}#}
-{#          <span class="badge {% if tagcon.is_main %}badge-primary{% else %}badge-secondary#}
-{#{% endif %}"></span>#}
-{#                {{ tag.tag_name }}#}
+{#          <span class="badge {% if tag %}badge-primary{% else %}badge-secondary{% endif %}">{{ tag }}</span>#}
 {#        {% endfor %}#}
+{#            {% endif %}#}
 {#            {% endfor %}#}
       {% for tag in tags %}
           <span class="badge {% if tag %}badge-primary{% else %}badge-secondary{% endif %}">{{ tag }}</span>

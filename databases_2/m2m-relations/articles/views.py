@@ -6,13 +6,14 @@ from .models import Article, Tags, TagConnector
 
 def articles_list(request):
     template = 'articles/news.html'
+    # articles_data = Article.objects.prefetch_related('tagconnector_set')
+    #
+    # context = {'object_list': articles_data
+    # }
+
     context = {'object_list': Article.objects.order_by('published_at'),
                'tags': Tags.objects.all(),
                'tagconnectors': TagConnector.objects.all()
                }
-
-    # используйте этот параметр для упорядочивания результатов
-    # https://docs.djangoproject.com/en/2.2/ref/models/querysets/#django.db.models.query.QuerySet.order_by
-    # ordering = '-published_at'
 
     return render(request, template, context)
