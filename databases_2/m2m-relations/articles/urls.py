@@ -1,13 +1,11 @@
 from django.urls import path
 from django.conf import settings
-from django.urls import include, path
-
+from django.urls import include
 from .views import articles_list
 
 urlpatterns = [
     path('', articles_list, name='articles'),
 ]
-
 
 if settings.DEBUG:
     import debug_toolbar

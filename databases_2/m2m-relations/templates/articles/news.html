@@ -13,9 +13,13 @@
           <a href="#">{{ article.title }}</a>
         </h4>
         <p class="card-text">{{ article.text }}</p>
-{#        {% for tag in article.tags.all %}#}
-{#          <span class="badge {% if tag.is_main %}badge-primary{% else %}badge-secondary{% endif %}">{{ tag.topic }}</span>#}
+{#        {% for tagcon in tagconnectors %}#}
+{#            {% for tag in tags %}#}
+{#          <span class="badge {% if tagcon.is_main %}badge-primary{% else %}badge-secondary#}
+{#{% endif %}"></span>#}
+{#                {{ tag.tag_name }}#}
 {#        {% endfor %}#}
+{#            {% endfor %}#}
       {% for tag in tags %}
           <span class="badge {% if tag %}badge-primary{% else %}badge-secondary{% endif %}">{{ tag }}</span>
         {% endfor %}
