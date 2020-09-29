@@ -18,7 +18,7 @@ class Article(models.Model):
 
 class Tags(models.Model):
 
-    article_name = models.ManyToManyField(Article, related_name='article', through='TagConnector')
+    article_name = models.ManyToManyField(Article, related_name='tags', through='TagConnector')
     tag_name = models.CharField(max_length=30, null=True, blank=True, verbose_name='Наименование тэга')
 
     class Meta:
@@ -37,3 +37,5 @@ class TagConnector(models.Model):
     class Meta:
         unique_together = [['is_main', 'article']]
 
+    def __str__(self):
+        return f' {self.tag}'
