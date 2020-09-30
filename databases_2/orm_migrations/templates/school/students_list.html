@@ -7,9 +7,17 @@
   <ul>
   {% for student in object_list %}
 {#    <li>{{ student.name }} {{ student.group }} <br> Преподаватель: {{ student.teacher.name }} {{ student.teacher.subject }}</li>#}
-    <li>{{ student.name }} {{ student.group }} <br> Преподаватель: {{ student.teacher.get.name }}.
-        Предмет: {{ student.teacher.get.subject }}</li>
+   <li>{{ student.name }} {{ student.group }} <br>
+      {% for teacher in student.teacher.all %}
+      Преподаватель: {{ teacher.name }}. Предмет: {{ teacher.subject }}.
+{#        Предмет: {{ student.teacher.get.subject }}</li>#}
+{#      <li>{{ student.name }} группа {{ student.group }}#}
+{#                    {% for obj_teacher in student.teacher.all %}#}
+{#                        <p>{{ obj_teacher.name }}</p> <p>{{ obj_teacher.subject }}</p>#}
+{#                    {% endfor %}#}
+{#                </li>#}
   {% endfor %}
+      {% endfor %}
   </ul>
 </div>
 {% endblock %}
