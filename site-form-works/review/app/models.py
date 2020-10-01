@@ -10,7 +10,8 @@ class Product(models.Model):
 
 
 class Review(models.Model):
-    text = models.TextField()
+    # id = models.IntegerField(primary_key=True, blank=False, null=False)
+    text = models.TextField(blank=True, null=True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
     def __str__(self):

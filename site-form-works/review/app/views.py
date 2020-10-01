@@ -20,10 +20,15 @@ def product_view(request, pk):
     template = 'app/product_detail.html'
     product = get_object_or_404(Product, id=pk)
 
-    form = ReviewForm
+
     if request.method == 'POST':
-        # логика для добавления отзыва
-        pass
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            Review.objects.create(**form.cleaned_data)
+            return redirect('main_page')
+
+    else:
+        form = ReviewForm()
 
     context = {
         'form': form,
