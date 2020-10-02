@@ -11,9 +11,11 @@ from .forms import SearchTicket
 
 def ticket_page_view(request):
     template = 'app/ticket_page.html'
+    # city = City.objects.all()
 
     context = {
-        'form': SearchTicket()
+        'form': SearchTicket(),
+        # 'cities': city
     }
 
     return render(request, template, context)

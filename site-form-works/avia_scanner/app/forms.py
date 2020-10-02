@@ -5,5 +5,6 @@ from .models import City
 
 
 class SearchTicket(forms.Form):
-    # Добавьте здесь поля, описанные в задании
-    pass
+    from_city = forms.ModelChoiceField(queryset=City.objects.all())
+    to_city = forms.ModelChoiceField(queryset=City.objects.all())
+    date = forms.DateTimeField
